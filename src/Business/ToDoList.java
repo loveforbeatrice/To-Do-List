@@ -11,14 +11,13 @@ public class ToDoList {
     private final TxtFileHandle fileHandle = new TxtFileHandle();
 
     public void jobListRecognizer(){
-        jobList.addAll(fileHandle.readJobsFromFile("src/DataAccess/todolist.txt"));
+
+        jobList.addAll(fileHandle.readJobsFromFile("todolist.txt"));
     }
 
 
 
     public void startToDoList() {
-
-        jobListRecognizer();
         int condNumber = 0;
         while (condNumber != 1) {
             System.out.println();
@@ -26,7 +25,7 @@ public class ToDoList {
             System.out.println("---------------------------------");
             System.out.println("1: Add Business.Job");
             System.out.println("2: Delete Business.Job");
-            System.out.println("3: Change Status of a Business.Job");
+            System.out.println("3: Change Status of a Job");
             System.out.println("4: Quit");
             System.out.println("---------------------------------");
             System.out.println();
@@ -64,8 +63,7 @@ public class ToDoList {
         System.out.println("Choose an option:");
         String input = scanner.nextLine().trim();
         try {
-            int option = Integer.parseInt(input);
-            return option;
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new InvalidOptionException();
         }
@@ -149,7 +147,7 @@ public class ToDoList {
             content.append(message1).append("\n").append(lines).append("\n");
         }
 
-        file.writeToFile("src\\DataAccess\\todolist.txt", content.toString(), false);
+        file.writeToFile("todolist.txt", content.toString(), false);
     }
 
 
